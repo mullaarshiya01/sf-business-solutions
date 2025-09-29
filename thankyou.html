@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thank You - SF Accounting</title>
+<link rel="stylesheet" href="style.css">
+<style>
+body {
+  margin:0; font-family:'Poppins', sans-serif; 
+  background: linear-gradient(to right, #1e3c72, #2a5298); 
+  color:white; display:flex; justify-content:center; align-items:center; height:100vh; text-align:center; overflow:hidden;
+}
+h1 { font-size:3rem; margin-bottom:20px; }
+p { font-size:1.3rem; margin-bottom:30px; }
+.btn {
+  background-color:#ffcc00; color:#1e3c72; padding:15px 30px; text-decoration:none; font-weight:bold; border-radius:8px; transition:0.3s;
+}
+.btn:hover { background-color:#ffd633; transform:scale(1.05); }
+.icon { font-size:5rem; margin-bottom:20px; color:#ffd633; position:relative; z-index:2; }
+.confetti-piece {
+  position: absolute; width:10px; height:10px; background-color:#ffd633; top:0; z-index:1;
+  animation: fall 3s linear infinite;
+}
+@keyframes fall {
+  0% { transform: translateY(0px) rotate(0deg); opacity:1; }
+  100% { transform: translateY(700px) rotate(360deg); opacity:0; }
+}
+</style>
+</head>
+<body>
+
+<div class="thank-you-container">
+  <div class="icon">🎉</div>
+  <h1>Thank You!</h1>
+  <p>Your message has been successfully sent to our expert team.<br>We will review your request and get back to you shortly.</p>
+  <p>Want to explore more services or send another inquiry? We’re just a click away!</p>
+  <a href="index.html" class="btn">Back to Contact Form</a>
+</div>
+
+<script>
+// Generate confetti
+const colors = ['#ffd633','#ff5733','#33ffec','#ff33f6','#33ff57','#3357ff'];
+for(let i=0;i<100;i++){
+    const confetti = document.createElement('div');
+    confetti.classList.add('confetti-piece');
+    confetti.style.left = Math.random() * window.innerWidth + 'px';
+    confetti.style.backgroundColor = colors[Math.floor(Math.random()*colors.length)];
+    confetti.style.animationDuration = 2 + Math.random()*3 + 's';
+    confetti.style.width = 5 + Math.random()*10 + 'px';
+    confetti.style.height = 5 + Math.random()*10 + 'px';
+    document.body.appendChild(confetti);
+}
+</script>
+
+</body>
+</html>
