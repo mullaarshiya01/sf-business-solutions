@@ -434,6 +434,21 @@
     <button class="scroll-top" id="scroll-top">
         <i class="fas fa-arrow-up"></i>
     </button>
+    <script>
+document.getElementById('contact-form').addEventListener('submit', function(e){
+    e.preventDefault(); // prevent default submission
+    const form = e.target;
+
+    fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(new FormData(form)).toString()
+    }).then(() => {
+        window.location.href = "/thank-you.html"; // redirect manually
+    }).catch((err) => alert("Form submission failed! " + err));
+});
+</script>
+
 
 </body>
 </html>
