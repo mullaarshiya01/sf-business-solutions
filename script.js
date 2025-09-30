@@ -41,10 +41,14 @@
             });
         });
         // Form submission with email functionality
-        document.getElementById('contact-form').addEventListener('submit', function(e) {
-            const submitBtn = document.getElementById('submit-btn');
-            const loading = document.getElementById('loading');
-            const formMessages = document.getElementById('form-messages');
+      document.getElementById('contact-form').addEventListener('submit', function(e) {
+    const submitBtn = document.getElementById('submit-btn');
+    const loading = document.getElementById('loading');
+    submitBtn.disabled = true;
+    loading.style.display = 'block';
+    submitBtn.querySelector('span').textContent = 'Sending...';
+});
+
 
             // Show loading state
             submitBtn.disabled = true;
