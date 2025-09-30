@@ -41,20 +41,46 @@
             });
         });
         // Form submission with email functionality
-      document.getElementById('contact-form').addEventListener('submit', function(e) {
+      const form = document.getElementById('contact-form');
+
+form.addEventListener('submit', function(e) {
+    e.preventDefault(); // Prevent default reload
+    if (!validateForm()) return; // Check validation
+
     const submitBtn = document.getElementById('submit-btn');
     const loading = document.getElementById('loading');
+
+    // Show loading state
     submitBtn.disabled = true;
     loading.style.display = 'block';
     submitBtn.querySelector('span').textContent = 'Sending...';
+
+    // Prepare form data
+    const formData = new FormData(form);
+
+    // Send data to Netlify
+    fetch('/', {
+        method: 'POST',
+        body: formData
+    })
+    .then(() => {
+        // Redirect to thank-you page
+        window.location.href = '/thank-you.html?success=true';
+    })
+    .catch((error) => {
+        alert('Form submission failed: ' + error);
+        submitBtn.disabled = false;
+        loading.style.display = 'none';
+        submitBtn.querySelector('span').textContent = 'Send';
+    });
 });
+
 
 
             // Show loading state
             submitBtn.disabled = true;
             loading.style.display = 'block';
             submitBtn.querySelector('span').textContent = 'Sending...';
-        });
         // Show success message after form submission
         window.addEventListener('load', function() {
             const urlParams = new URLSearchParams(window.location.search);
